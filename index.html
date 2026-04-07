@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>StoreAI | AI 代理型電商入口網</title>
+  <meta name="description" content="StoreAI 以 AI 全代管模式重構電商營運，讓商家專注商品與服務，維運、行銷、流量與對帳交給 AI。"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+
+        .storeai-v3{margin:0;color:#1a1a1a;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:radial-gradient(circle at 90% 6%,rgba(134,188,37,.14),transparent 30%),radial-gradient(circle at 10% 0%,rgba(26,26,26,.04),transparent 26%),#fff}
+        .storeai-v3 *{box-sizing:border-box}
+        .storeai-v3 .container{width:min(1160px,92vw);margin:0 auto}
+        .storeai-v3 .grid-bg{position:absolute;inset:0 12px 0 0;pointer-events:none;opacity:.45;background-image:linear-gradient(rgba(26,26,26,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(26,26,26,.06) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.28) 55%,transparent 100%)}
+        .storeai-v3 .nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.78);backdrop-filter:blur(14px);border-bottom:1px solid #e9e9e9}
+        .storeai-v3 .nav-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+        .storeai-v3 .brand{display:inline-flex;align-items:center;gap:10px;font-weight:700}
+        .storeai-v3 .brand-mark{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,#86bc25,#6d9c1e);box-shadow:0 12px 26px rgba(134,188,37,.38)}
+        .storeai-v3 .nav-links{display:none;gap:20px;color:#5f5f5f;font-size:14px}
+        @media (min-width:860px){.storeai-v3 .nav-links{display:flex}}
+        .storeai-v3 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;border:1px solid transparent;padding:11px 18px;font-weight:700;font-size:14px;transition:.22s ease}
+        .storeai-v3 .btn-dark{background:#1a1a1a;color:#fff}
+        .storeai-v3 .btn-outline{border-color:#e9e9e9;background:#fff}
+        .storeai-v3 .btn-shimmer{position:relative;overflow:hidden;color:#fff;background:linear-gradient(135deg,#86bc25,#6d9c1e);box-shadow:0 16px 36px rgba(134,188,37,.35)}
+        .storeai-v3 .btn-shimmer::after{content:"";position:absolute;top:-40%;left:-30%;width:40%;height:180%;transform:rotate(18deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);animation:shimmer 2.2s linear infinite}
+        @keyframes shimmer{to{left:120%}}
+        .storeai-v3 .hero{position:relative;overflow:hidden;padding:clamp(56px,8vw,92px) 0 clamp(72px,8vw,96px);background:linear-gradient(110deg,rgba(255,255,255,.72) 0%,rgba(255,255,255,.38) 38%,rgba(255,255,255,.56) 100%),url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat}
+        .storeai-v3 .hero-layout{position:relative;z-index:1;display:grid;gap:24px;grid-template-columns:1fr}
+        @media (min-width:980px){.storeai-v3 .hero-layout{grid-template-columns:1.05fr .95fr;align-items:end}}
+        .storeai-v3 .eyebrow{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 12px;border:1px solid rgba(134,188,37,.3);color:#6d9c1e;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#f8fbea}
+        .storeai-v3 h1{margin:16px 0 0;letter-spacing:-.05em;line-height:1.02;font-size:clamp(42px,7vw,78px)}
+        .storeai-v3 .hero-copy{margin-top:20px;max-width:650px;color:#2f2f2f;font-size:18px;line-height:1.85;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.66);background:rgba(255,255,255,.58);backdrop-filter:blur(3px);box-shadow:0 10px 30px rgba(26,26,26,.08)}
+        .storeai-v3 .cta-row{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px}
+        .storeai-v3 .trust-marquee{margin-top:30px;border:1px solid #e9e9e9;border-radius:999px;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center;width:min(100%,1160px);max-width:1160px}
+        .storeai-v3 .marquee-track{display:flex;width:max-content;min-width:100%;padding:clamp(8px,1.2vw,10px) 0;animation:marquee 26s linear infinite;will-change:transform;align-items:center}
+        .storeai-v3 .marquee-group{display:flex;gap:clamp(12px,2.2vw,24px);padding-right:clamp(12px,2.2vw,24px);flex-shrink:0;align-items:center}
+        .storeai-v3 .marquee-item{padding:0 clamp(6px,1vw,10px);color:#4e4e4e;font-size:clamp(11px,1.25vw,13px);font-weight:600;white-space:nowrap}
+        @keyframes marquee{to{transform:translateX(-50%)}}
+        .storeai-v3 .hero-card{border:none;border-radius:24px;background:#fff;overflow:hidden;box-shadow:0 24px 60px rgba(25,25,25,.08)}
+        .storeai-v3 .hero-card-top{padding:14px 16px;border-bottom:1px solid #e9e9e9;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#5f5f5f}
+        .storeai-v3 .hero-card-body{position:relative;min-height:340px;background:linear-gradient(150deg,rgba(255,255,255,.92),rgba(255,255,255,.4)),url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat}
+        .storeai-v3 .mini-kpi{position:absolute;left:16px;right:16px;bottom:16px;display:grid;gap:8px}
+        .storeai-v3 .kpi{border:1px solid rgba(255,255,255,.55);border-radius:14px;background:rgba(255,255,255,.8);backdrop-filter:blur(8px);padding:10px 12px;font-size:12px;color:#3e3e3e}
+        .storeai-v3 .kpi b{display:block;font-size:13px;color:#1a1a1a}
+        .storeai-v3 .section{padding:clamp(70px,8vw,100px) 0}
+        .storeai-v3 .section-head{max-width:760px;margin-bottom:26px}
+        .storeai-v3 .section-head h2{margin:10px 0 0;line-height:1.1;letter-spacing:-.04em;font-size:clamp(32px,4vw,54px)}
+        .storeai-v3 .no-wrap-title{white-space:nowrap}
+        .storeai-v3 .section-head p{margin-top:14px;color:#5f5f5f;line-height:1.8}
+        .storeai-v3 .bento{display:grid;gap:14px;grid-template-columns:1fr}
+        @media (min-width:980px){.storeai-v3 .bento{grid-template-columns:1.2fr .8fr}.storeai-v3 .bento-wide{grid-column:1/-1}}
+        .storeai-v3 .tile{border:1px solid #e9e9e9;border-radius:24px;padding:22px;background:#fff;box-shadow:0 14px 38px rgba(26,26,26,.05)}
+        .storeai-v3 .tile h3{margin:0;font-size:26px;letter-spacing:-.03em}
+        .storeai-v3 .tile p{margin:10px 0 0;color:#5f5f5f;line-height:1.8}
+        .storeai-v3 .flash-lab{margin-top:16px;border-radius:18px;border:1px dashed rgba(134,188,37,.4);padding:12px;background:#fcfef6}
+        .storeai-v3 .flash-grid{display:grid;gap:10px;grid-template-columns:1fr}
+        @media (min-width:820px){.storeai-v3 .flash-grid{grid-template-columns:1fr 1fr}}
+        .storeai-v3 .vision{position:relative;border-radius:14px;overflow:hidden;min-height:190px;background:linear-gradient(135deg,rgba(134,188,37,.35),rgba(134,188,37,.05)),url("https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80") center/cover no-repeat}
+        .storeai-v3 .scan{position:absolute;left:8%;right:8%;height:2px;top:14%;background:linear-gradient(90deg,transparent,#fff,transparent);box-shadow:0 0 18px rgba(255,255,255,.7);animation:scan 2.8s ease-in-out infinite}
+        @keyframes scan{0%,100%{top:14%;opacity:.45}50%{top:82%;opacity:1}}
+        .storeai-v3 .output-stack{display:grid;gap:8px}
+        .storeai-v3 .output{border:1px solid #e9e9e9;border-radius:12px;background:#fff;padding:10px;font-size:13px;color:#5f5f5f;opacity:.35;transform:translateY(8px);animation:pop 3s ease-in-out infinite}
+        .storeai-v3 .output strong{color:#1a1a1a;display:block;margin-bottom:4px}
+        .storeai-v3 .output:nth-child(2){animation-delay:.35s}
+        .storeai-v3 .output:nth-child(3){animation-delay:.7s}
+        @keyframes pop{0%,100%{opacity:.3;transform:translateY(8px)}25%,75%{opacity:1;transform:translateY(0)}}
+        .storeai-v3 .table-section{background:#fbfbfb;border-top:1px solid #e9e9e9;border-bottom:1px solid #e9e9e9}
+        .storeai-v3 .table-wrap{overflow-x:auto;border-radius:24px;border:1px solid #e9e9e9;background:#fff}
+        .storeai-v3 table{width:100%;min-width:980px;border-collapse:collapse;font-size:14px}
+        .storeai-v3 th,.storeai-v3 td{border-bottom:1px solid #e9e9e9;text-align:left;padding:14px 16px;vertical-align:top}
+        .storeai-v3 th{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:#5d5d5d;background:#f6f6f6}
+        .storeai-v3 td:first-child{font-weight:700;color:#1a1a1a;width:170px}
+        .storeai-v3 td:nth-child(2),.storeai-v3 th:nth-child(2){background:linear-gradient(180deg,rgba(134,188,37,.14),rgba(134,188,37,.06))}
+        .storeai-v3 .dim{color:#666}
+        .storeai-v3 .matrix-grid{display:grid;gap:14px;grid-template-columns:1fr}
+        @media (min-width:960px){.storeai-v3 .matrix-grid{grid-template-columns:repeat(3,1fr)}}
+        .storeai-v3 .matrix-card{border:1px solid #e9e9e9;border-radius:22px;background:#fff;padding:20px}
+        .storeai-v3 .matrix-card h3{margin:0;font-size:22px}
+        .storeai-v3 .matrix-card p{margin-top:8px;color:#5f5f5f;line-height:1.8}
+        .storeai-v3 .bar{margin-top:16px;height:9px;border-radius:999px;background:#ececec;overflow:hidden}
+        .storeai-v3 .bar>i{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#86bc25,#6d9c1e);transition:width 1s cubic-bezier(.2,.8,.2,1)}
+        .storeai-v3 .in .bar>i{width:var(--w,70%)}
+        .storeai-v3 .cta-final{padding:clamp(56px,8vw,84px) 0}
+        .storeai-v3 .cta-box{position:relative;overflow:hidden;border-radius:28px;border:1px solid #e9e9e9;background:radial-gradient(circle at 18% 18%,rgba(134,188,37,.18),transparent 38%),linear-gradient(180deg,#fff,#fafcf5);text-align:center;padding:clamp(34px,6vw,56px) 16px}
+        .storeai-v3 .cta-box h2{margin:0;letter-spacing:-.03em;font-size:clamp(30px,4.8vw,62px);line-height:1.05}
+        .storeai-v3 .cta-box p{margin:14px auto 0;max-width:760px;color:#5f5f5f;line-height:1.85}
+        .storeai-v3 .cta-box .cta-row{justify-content:center}
+        .storeai-v3 .reveal{opacity:1;transform:none}
+        .storeai-v3 .reveal.in{opacity:1;transform:none}
+      
+
+        /* 手機版隱藏 hero-card-top / hero-card-body */
+        @media (max-width: 979px) {
+          .storeai-v3 .hero-card-top,
+          .storeai-v3 .hero-card-body { display: none; }
+          .storeai-v3 .hero-card { box-shadow: none; background: transparent; }
+        }
+
+  </style>
+</head>
+<body>
+<main class="storeai-v3"><header class="nav"><div class="container nav-row"><a class="brand" href="#top"><span class="brand-mark">AI</span>StoreAI</a><nav class="nav-links" aria-label="頁面導覽"><a href="#value">核心價值</a><a href="#compare">市場對照</a><a href="#matrix">獲利矩陣</a></nav><a class="btn btn-dark" href="#final">立即入駐</a></div></header><section id="top" class="hero"><div class="grid-bg"></div><div class="container hero-layout"><div class="reveal in"><span class="eyebrow">AI 代理型電商入口網</span><h1>讓 AI 成為你的金牌店長，<br/>利潤 100% 回歸品牌</h1><p class="hero-copy">不必請美編、不必找代操、不必求流量。StoreAI 透過全自動託管技術，將維運、行銷、流量、對帳交給 AI， 讓商家專注商品品質與服務體驗。</p><div class="cta-row"><a class="btn btn-shimmer" href="#final">立即免費體驗</a><a class="btn btn-outline" href="#value">預約 AI 演示</a></div><div class="trust-marquee" aria-label="價值跑馬燈"><div class="marquee-track"><div class="marquee-group"><span class="marquee-item">AI 全代管</span><span class="marquee-item">3% - 5% 極低抽成</span><span class="marquee-item">點數複利資產化</span><span class="marquee-item">CRM 生態系導客</span><span class="marquee-item">AI 閃電上架</span><span class="marquee-item">一鍵搬家</span></div><div class="marquee-group" aria-hidden="true"><span class="marquee-item">AI 全代管</span><span class="marquee-item">3% - 5% 極低抽成</span><span class="marquee-item">點數複利資產化</span><span class="marquee-item">CRM 生態系導客</span><span class="marquee-item">AI 閃電上架</span><span class="marquee-item">一鍵搬家</span></div></div></div></div><aside class="hero-card reveal"><div class="hero-card-top"><span>StoreAI Live Console</span><span>Managed by AI</span></div><div class="hero-card-body"><div class="mini-kpi"><div class="kpi"><b>AI 維運中心</b>自動上架、文案生成、素材輸出與檢核。</div><div class="kpi"><b>生態系 CRM</b>AI 意圖標籤主動導客，進駐即有業績動能。</div></div></div></aside></div></section><section id="value" class="section"><div class="container"><div class="section-head reveal"><span class="eyebrow">三大核心價值</span><h2 class="no-wrap-title">託管優先，AI 代替 90% 營運人力</h2><p>版型採用 Magic UI 常見的 Bento 設計與動態細節，視覺更科技、更聚焦轉化。</p></div><div class="bento"><article class="tile bento-wide reveal"><h3>AI 全自動維運中心（託管優先）</h3><p>強調 AI 閃電上架與一鍵搬家，從素材到頁面到檢核，流程全自動。團隊把時間留給商品決策與客戶服務。</p><div class="flash-lab"><div class="flash-grid"><div class="vision"><div class="scan"></div></div><div class="output-stack"><div class="output"><strong>SEO 文案生成</strong>自動建立標題、關鍵字、長短描述，快速對齊搜尋引擎需求。</div><div class="output"><strong>Reels 腳本與分鏡</strong>一鍵輸出短影音節奏、鉤子文案與導購 CTA。</div><div class="output"><strong>上架與對帳檢核</strong>欄位、庫存、金流自動檢查，降低人為失誤。</div></div></div></div></article><article class="tile reveal"><h3>生態系 CRM 賦能</h3><p>不必開發會員系統，直接連接既有百萬會員池。透過 AI 意圖標籤主動導流，讓品牌進駐即有成交機會。</p></article><article class="tile reveal"><h3>點數資產化機制</h3><p>點數不只折抵，而是可複利、可跨場景流通的資產，形成品牌長期護城河與回購飛輪。</p></article></div></div></section><section id="compare" class="section table-section"><div class="container"><div class="section-head reveal"><span class="eyebrow">10-Point Comparison</span><h2>StoreAI vs. 市場主流傳統路線</h2><p>依你的要求，以代稱呈現：傳統品牌系統 A、全通路平台 B、傳統商城 C、DIY 工具 D。</p></div><div class="table-wrap reveal"><table><thead><tr><th>比較項目</th><th>StoreAI</th><th>傳統品牌系統 A</th><th>全通路平台 B</th><th>傳統商城 C</th><th>DIY 工具 D</th></tr></thead><tbody><tr><td>抽成比率</td><td>3% - 5% 極低抽成</td><td class="dim">偏高</td><td class="dim">中高區間</td><td class="dim">中高區間</td><td class="dim">月費 + 外掛</td></tr><tr><td>營運模式</td><td>AI 全代管模式</td><td class="dim">商家自理</td><td class="dim">多需專業團隊</td><td class="dim">人力密集</td><td class="dim">自行維護</td></tr><tr><td>資產價值</td><td>點數複利資產化</td><td class="dim">紅利折抵</td><td class="dim">點數折扣導向</td><td class="dim">促銷券導向</td><td class="dim">依賴外掛</td></tr><tr><td>上架效率</td><td>AI 閃電上架</td><td class="dim">手動建檔</td><td class="dim">流程較長</td><td class="dim">手動為主</td><td class="dim">自行配置</td></tr><tr><td>內容產製</td><td>照片直轉 SEO + Reels</td><td class="dim">需外包</td><td class="dim">多工具切換</td><td class="dim">人工製作</td><td class="dim">自行產出</td></tr><tr><td>CRM 能力</td><td>生態系會員池賦能</td><td class="dim">自建會員</td><td class="dim">平台導向</td><td class="dim">功能有限</td><td class="dim">自行串接</td></tr><tr><td>流量導入</td><td>AI 意圖導客</td><td class="dim">自行買量</td><td class="dim">競價依賴高</td><td class="dim">平台流量不穩</td><td class="dim">全自力</td></tr><tr><td>對帳效率</td><td>AI 自動對帳</td><td class="dim">人工整理</td><td class="dim">半自動</td><td class="dim">人工校對</td><td class="dim">外部工具</td></tr><tr><td>擴張速度</td><td>模組化快速複製</td><td class="dim">擴張成本高</td><td class="dim">需專案導入</td><td class="dim">人力綁定</td><td class="dim">技術門檻高</td></tr><tr><td>品牌主控權</td><td>利潤與數據回歸品牌</td><td class="dim">受平台規則限制</td><td class="dim">資料權限受限</td><td class="dim">營運壓力高</td><td class="dim">需自行養團隊</td></tr></tbody></table></div></div></section><section id="matrix" class="section"><div class="container"><div class="section-head reveal"><span class="eyebrow">Monetization Matrix</span><h2 class="no-wrap-title">三大獲利支柱，讓成長可持續複利</h2><p>區塊捲動到視窗後會啟動資料條動畫，呈現交易、AI 服務、金融數據的價值堆疊。</p></div><div class="matrix-grid"><article class="matrix-card reveal in" style="--w:74%"><h3>交易收入</h3><p>3% 交易手續費，依規模化交易持續放大平台與品牌雙方收益。</p><div class="bar"><i></i></div></article><article class="matrix-card reveal in" style="--w:68%"><h3>AI 價值服務</h3><p>AI 視覺工作室素材生成、智慧投廣代操分潤，讓服務直接與成長綁定。</p><div class="bar"><i></i></div></article><article class="matrix-card reveal in" style="--w:82%"><h3>金融與數據</h3><p>點數複利、供應鏈融資、數據洞察報告，形成品牌資產型增長引擎。</p><div class="bar"><i></i></div></article></div></div></section><section id="final" class="cta-final"><div class="container"><div class="cta-box reveal in"><h2>這不只是開店平台，這是你裝在雲端的自動化獲利工廠</h2><p>把維運庶務交給 AI，把品牌價值與利潤留在自己手上，現在就啟動 StoreAI。</p><div class="cta-row"><a class="btn btn-shimmer" href="#top">立即入駐 StoreAI</a></div></div></div></section><style>
+        .storeai-v3{margin:0;color:#1a1a1a;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:radial-gradient(circle at 90% 6%,rgba(134,188,37,.14),transparent 30%),radial-gradient(circle at 10% 0%,rgba(26,26,26,.04),transparent 26%),#fff}
+        .storeai-v3 *{box-sizing:border-box}
+        .storeai-v3 .container{width:min(1160px,92vw);margin:0 auto}
+        .storeai-v3 .grid-bg{position:absolute;inset:0 12px 0 0;pointer-events:none;opacity:.45;background-image:linear-gradient(rgba(26,26,26,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(26,26,26,.06) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.28) 55%,transparent 100%)}
+        .storeai-v3 .nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.78);backdrop-filter:blur(14px);border-bottom:1px solid #e9e9e9}
+        .storeai-v3 .nav-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+        .storeai-v3 .brand{display:inline-flex;align-items:center;gap:10px;font-weight:700}
+        .storeai-v3 .brand-mark{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,#86bc25,#6d9c1e);box-shadow:0 12px 26px rgba(134,188,37,.38)}
+        .storeai-v3 .nav-links{display:none;gap:20px;color:#5f5f5f;font-size:14px}
+        @media (min-width:860px){.storeai-v3 .nav-links{display:flex}}
+        .storeai-v3 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;border:1px solid transparent;padding:11px 18px;font-weight:700;font-size:14px;transition:.22s ease}
+        .storeai-v3 .btn-dark{background:#1a1a1a;color:#fff}
+        .storeai-v3 .btn-outline{border-color:#e9e9e9;background:#fff}
+        .storeai-v3 .btn-shimmer{position:relative;overflow:hidden;color:#fff;background:linear-gradient(135deg,#86bc25,#6d9c1e);box-shadow:0 16px 36px rgba(134,188,37,.35)}
+        .storeai-v3 .btn-shimmer::after{content:"";position:absolute;top:-40%;left:-30%;width:40%;height:180%;transform:rotate(18deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);animation:shimmer 2.2s linear infinite}
+        @keyframes shimmer{to{left:120%}}
+        .storeai-v3 .hero{position:relative;overflow:hidden;padding:clamp(56px,8vw,92px) 0 clamp(72px,8vw,96px);background:linear-gradient(110deg,rgba(255,255,255,.72) 0%,rgba(255,255,255,.38) 38%,rgba(255,255,255,.56) 100%),url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat}
+        .storeai-v3 .hero-layout{position:relative;z-index:1;display:grid;gap:24px;grid-template-columns:1fr}
+        @media (min-width:980px){.storeai-v3 .hero-layout{grid-template-columns:1.05fr .95fr;align-items:end}}
+        .storeai-v3 .eyebrow{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 12px;border:1px solid rgba(134,188,37,.3);color:#6d9c1e;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#f8fbea}
+        .storeai-v3 h1{margin:16px 0 0;letter-spacing:-.05em;line-height:1.02;font-size:clamp(42px,7vw,78px)}
+        .storeai-v3 .hero-copy{margin-top:20px;max-width:650px;color:#2f2f2f;font-size:18px;line-height:1.85;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.66);background:rgba(255,255,255,.58);backdrop-filter:blur(3px);box-shadow:0 10px 30px rgba(26,26,26,.08)}
+        .storeai-v3 .cta-row{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px}
+        .storeai-v3 .trust-marquee{margin-top:30px;border:1px solid #e9e9e9;border-radius:999px;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center;width:min(100%,1160px);max-width:1160px}
+        .storeai-v3 .marquee-track{display:flex;width:max-content;min-width:100%;padding:clamp(8px,1.2vw,10px) 0;animation:marquee 26s linear infinite;will-change:transform;align-items:center}
+        .storeai-v3 .marquee-group{display:flex;gap:clamp(12px,2.2vw,24px);padding-right:clamp(12px,2.2vw,24px);flex-shrink:0;align-items:center}
+        .storeai-v3 .marquee-item{padding:0 clamp(6px,1vw,10px);color:#4e4e4e;font-size:clamp(11px,1.25vw,13px);font-weight:600;white-space:nowrap}
+        @keyframes marquee{to{transform:translateX(-50%)}}
+        .storeai-v3 .hero-card{border:none;border-radius:24px;background:#fff;overflow:hidden;box-shadow:0 24px 60px rgba(25,25,25,.08)}
+        .storeai-v3 .hero-card-top{padding:14px 16px;border-bottom:1px solid #e9e9e9;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#5f5f5f}
+        .storeai-v3 .hero-card-body{position:relative;min-height:340px;background:linear-gradient(150deg,rgba(255,255,255,.92),rgba(255,255,255,.4)),url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat}
+        .storeai-v3 .mini-kpi{position:absolute;left:16px;right:16px;bottom:16px;display:grid;gap:8px}
+        .storeai-v3 .kpi{border:1px solid rgba(255,255,255,.55);border-radius:14px;background:rgba(255,255,255,.8);backdrop-filter:blur(8px);padding:10px 12px;font-size:12px;color:#3e3e3e}
+        .storeai-v3 .kpi b{display:block;font-size:13px;color:#1a1a1a}
+        .storeai-v3 .section{padding:clamp(70px,8vw,100px) 0}
+        .storeai-v3 .section-head{max-width:760px;margin-bottom:26px}
+        .storeai-v3 .section-head h2{margin:10px 0 0;line-height:1.1;letter-spacing:-.04em;font-size:clamp(32px,4vw,54px)}
+        .storeai-v3 .no-wrap-title{white-space:nowrap}
+        .storeai-v3 .section-head p{margin-top:14px;color:#5f5f5f;line-height:1.8}
+        .storeai-v3 .bento{display:grid;gap:14px;grid-template-columns:1fr}
+        @media (min-width:980px){.storeai-v3 .bento{grid-template-columns:1.2fr .8fr}.storeai-v3 .bento-wide{grid-column:1/-1}}
+        .storeai-v3 .tile{border:1px solid #e9e9e9;border-radius:24px;padding:22px;background:#fff;box-shadow:0 14px 38px rgba(26,26,26,.05)}
+        .storeai-v3 .tile h3{margin:0;font-size:26px;letter-spacing:-.03em}
+        .storeai-v3 .tile p{margin:10px 0 0;color:#5f5f5f;line-height:1.8}
+        .storeai-v3 .flash-lab{margin-top:16px;border-radius:18px;border:1px dashed rgba(134,188,37,.4);padding:12px;background:#fcfef6}
+        .storeai-v3 .flash-grid{display:grid;gap:10px;grid-template-columns:1fr}
+        @media (min-width:820px){.storeai-v3 .flash-grid{grid-template-columns:1fr 1fr}}
+        .storeai-v3 .vision{position:relative;border-radius:14px;overflow:hidden;min-height:190px;background:linear-gradient(135deg,rgba(134,188,37,.35),rgba(134,188,37,.05)),url("https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80") center/cover no-repeat}
+        .storeai-v3 .scan{position:absolute;left:8%;right:8%;height:2px;top:14%;background:linear-gradient(90deg,transparent,#fff,transparent);box-shadow:0 0 18px rgba(255,255,255,.7);animation:scan 2.8s ease-in-out infinite}
+        @keyframes scan{0%,100%{top:14%;opacity:.45}50%{top:82%;opacity:1}}
+        .storeai-v3 .output-stack{display:grid;gap:8px}
+        .storeai-v3 .output{border:1px solid #e9e9e9;border-radius:12px;background:#fff;padding:10px;font-size:13px;color:#5f5f5f;opacity:.35;transform:translateY(8px);animation:pop 3s ease-in-out infinite}
+        .storeai-v3 .output strong{color:#1a1a1a;display:block;margin-bottom:4px}
+        .storeai-v3 .output:nth-child(2){animation-delay:.35s}
+        .storeai-v3 .output:nth-child(3){animation-delay:.7s}
+        @keyframes pop{0%,100%{opacity:.3;transform:translateY(8px)}25%,75%{opacity:1;transform:translateY(0)}}
+        .storeai-v3 .table-section{background:#fbfbfb;border-top:1px solid #e9e9e9;border-bottom:1px solid #e9e9e9}
+        .storeai-v3 .table-wrap{overflow-x:auto;border-radius:24px;border:1px solid #e9e9e9;background:#fff}
+        .storeai-v3 table{width:100%;min-width:980px;border-collapse:collapse;font-size:14px}
+        .storeai-v3 th,.storeai-v3 td{border-bottom:1px solid #e9e9e9;text-align:left;padding:14px 16px;vertical-align:top}
+        .storeai-v3 th{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:#5d5d5d;background:#f6f6f6}
+        .storeai-v3 td:first-child{font-weight:700;color:#1a1a1a;width:170px}
+        .storeai-v3 td:nth-child(2),.storeai-v3 th:nth-child(2){background:linear-gradient(180deg,rgba(134,188,37,.14),rgba(134,188,37,.06))}
+        .storeai-v3 .dim{color:#666}
+        .storeai-v3 .matrix-grid{display:grid;gap:14px;grid-template-columns:1fr}
+        @media (min-width:960px){.storeai-v3 .matrix-grid{grid-template-columns:repeat(3,1fr)}}
+        .storeai-v3 .matrix-card{border:1px solid #e9e9e9;border-radius:22px;background:#fff;padding:20px}
+        .storeai-v3 .matrix-card h3{margin:0;font-size:22px}
+        .storeai-v3 .matrix-card p{margin-top:8px;color:#5f5f5f;line-height:1.8}
+        .storeai-v3 .bar{margin-top:16px;height:9px;border-radius:999px;background:#ececec;overflow:hidden}
+        .storeai-v3 .bar>i{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#86bc25,#6d9c1e);transition:width 1s cubic-bezier(.2,.8,.2,1)}
+        .storeai-v3 .in .bar>i{width:var(--w,70%)}
+        .storeai-v3 .cta-final{padding:clamp(56px,8vw,84px) 0}
+        .storeai-v3 .cta-box{position:relative;overflow:hidden;border-radius:28px;border:1px solid #e9e9e9;background:radial-gradient(circle at 18% 18%,rgba(134,188,37,.18),transparent 38%),linear-gradient(180deg,#fff,#fafcf5);text-align:center;padding:clamp(34px,6vw,56px) 16px}
+        .storeai-v3 .cta-box h2{margin:0;letter-spacing:-.03em;font-size:clamp(30px,4.8vw,62px);line-height:1.05}
+        .storeai-v3 .cta-box p{margin:14px auto 0;max-width:760px;color:#5f5f5f;line-height:1.85}
+        .storeai-v3 .cta-box .cta-row{justify-content:center}
+        .storeai-v3 .reveal{opacity:1;transform:none}
+        .storeai-v3 .reveal.in{opacity:1;transform:none}
+      </style></main>
+</body>
+</html>
