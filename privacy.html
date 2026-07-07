@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>隱私權政策 | StoreAI</title>
+  <meta name="description" content="storeAI 商品工具 Chrome 擴充功能隱私權政策"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    .storeai-v3{margin:0;color:#1a1a1a;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#fff}
+    .storeai-v3 *{box-sizing:border-box}
+    .storeai-v3 .container{width:min(1160px,92vw);margin:0 auto}
+    .storeai-v3 .nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.78);backdrop-filter:blur(14px);border-bottom:1px solid #e9e9e9}
+    .storeai-v3 .nav-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .storeai-v3 .brand{display:inline-flex;align-items:center;gap:10px;font-weight:700;color:#1a1a1a;text-decoration:none}
+    .storeai-v3 .brand-mark{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,#86bc25,#6d9c1e);box-shadow:0 12px 26px rgba(134,188,37,.38)}
+
+    .privacy-wrap{width:min(760px,92vw);margin:0 auto;padding:56px 0 96px}
+    .privacy-eyebrow{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 12px;border:1px solid rgba(134,188,37,.3);color:#6d9c1e;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#f8fbea}
+    .privacy-wrap h1{margin:16px 0 8px;letter-spacing:-.03em;line-height:1.15;font-size:clamp(28px,4.5vw,40px)}
+    .privacy-updated{color:#6b6b6b;margin-bottom:40px;font-size:14px}
+    .privacy-section{margin-bottom:32px}
+    .privacy-section h2{font-size:20px;font-weight:700;color:#1a1a1a;margin:0 0 12px}
+    .privacy-section p{line-height:1.85;color:#3f3f3f;margin:0 0 10px}
+    .privacy-section ul{padding-left:20px;margin:0}
+    .privacy-section li{line-height:1.85;color:#3f3f3f;margin-bottom:8px}
+    .privacy-footer{border-top:1px solid #e9e9e9;padding:24px 0;color:#5f5f5f;font-size:13px;text-align:center}
+    .privacy-section a{color:#6d9c1e;text-decoration:underline}
+  </style>
+</head>
+<body>
+<main class="storeai-v3">
+  <header class="nav">
+    <div class="container nav-row">
+      <a class="brand" href="/"><span class="brand-mark">AI</span>StoreAI</a>
+    </div>
+  </header>
+
+  <article class="privacy-wrap">
+    <span class="privacy-eyebrow">Privacy Policy</span>
+    <h1>storeAI 商品工具 隱私權政策</h1>
+    <p class="privacy-updated">最後更新日期：2026-07-07</p>
+
+    <section class="privacy-section">
+      <h2>一、適用範圍</h2>
+      <p>本隱私權政策說明「storeAI 商品工具」Chrome 擴充功能（以下稱「本擴充功能」）如何蒐集、使用及保護使用者資料。本擴充功能供使用者將樂天市場、Naver、淘寶／天貓等平台的商品資訊，快速轉換為 EasyStore／storeAI 商店的上架資料。</p>
+    </section>
+
+    <section class="privacy-section">
+      <h2>二、我們蒐集的資料</h2>
+      <p>本擴充功能僅在使用者主動操作時運作，會處理以下資料：</p>
+      <ul>
+        <li>商品頁面內容：使用者開啟支援的商品頁面並點擊擴充功能時，讀取該頁面上公開顯示的商品標題、價格、圖片網址、規格等文字與圖片內容，用於產生上架資料。</li>
+        <li>驗證資訊：使用者於設定頁自行輸入的 EasyStore／storeAI 商店 API Token，以及 AI 服務（Google Gemini／OpenAI／Anthropic）API Key，用於呼叫對應服務完成上架與文案生成。</li>
+        <li>使用者設定：匯率、運費、最低利潤等使用者自訂的定價參數，以及每日匯率快取。</li>
+      </ul>
+    </section>
+
+    <section class="privacy-section">
+      <h2>三、資料的使用方式</h2>
+      <p>上述資料僅用於實現本擴充功能的單一用途——協助使用者將商品資訊上架至自己的商店，具體用途如下：</p>
+      <ul>
+        <li>商品頁面內容：用於自動填入商品標題、描述、圖片與定價欄位，並可能傳送至翻譯服務（Google 翻譯 API）進行語言轉換，以及傳送至 AI 服務（Google Gemini／OpenAI／Anthropic）以生成社群貼文文案。</li>
+        <li>商品圖片：可能透過圖床服務（catbox.moe）暫存中轉，以取得可公開存取的圖片網址，供建立商店商品時使用。</li>
+        <li>驗證資訊（API Token／API Key）：僅用於呼叫對應服務的 API 以完成商品上架或文案生成，不會用於其他目的。</li>
+        <li>匯率資料：向台灣銀行（rate.bot.com.tw）或 ExchangeRate-API（open.er-api.com）查詢即時匯率，用於計算商品定價。</li>
+      </ul>
+    </section>
+
+    <section class="privacy-section">
+      <h2>四、資料儲存方式</h2>
+      <p>使用者設定與 API Token／API Key 皆儲存於使用者裝置本機的瀏覽器儲存空間（chrome.storage.local），不會上傳或同步至 StoreAI 的任何伺服器。開發者無法存取使用者儲存於本機的 Token 或 API Key。</p>
+    </section>
+
+    <section class="privacy-section">
+      <h2>五、資料分享與第三方服務</h2>
+      <p>我們不會將使用者資料販售或轉移給第三方，亦不會將資料用於與本擴充功能單一用途無關的目的，或用於判斷信用評等、核貸等用途。</p>
+      <p>為完成上架、翻譯、定價與文案生成功能，本擴充功能會依使用者操作，將必要資料傳送至下列第三方服務：</p>
+      <ul>
+        <li>EasyStore／storeAI：建立商店商品資料</li>
+        <li>Google 翻譯 API（translate.googleapis.com）：商品標題與描述翻譯</li>
+        <li>Google Gemini／OpenAI／Anthropic：AI 文案生成</li>
+        <li>catbox.moe：商品圖片暫存中轉</li>
+        <li>台灣銀行／ExchangeRate-API：即時匯率查詢</li>
+      </ul>
+    </section>
+
+    <section class="privacy-section">
+      <h2>六、使用者權利</h2>
+      <p>使用者可隨時於擴充功能設定頁清除已輸入的 API Token／API Key，或直接於 Chrome 移除本擴充功能，即可刪除本機儲存的所有相關資料。</p>
+    </section>
+
+    <section class="privacy-section">
+      <h2>七、政策異動</h2>
+      <p>本政策如有更新，將公布於本頁面，並更新上方修訂日期。建議使用者定期查閱本頁以掌握最新內容。</p>
+    </section>
+
+    <section class="privacy-section">
+      <h2>八、聯絡我們</h2>
+      <p>如對本隱私權政策有任何疑問，歡迎透過 <a href="mailto:kidda0412@gmail.com">kidda0412@gmail.com</a> 與我們聯繫。</p>
+    </section>
+  </article>
+
+  <div class="privacy-footer">© StoreAI. All rights reserved.</div>
+</main>
+</body>
+</html>
